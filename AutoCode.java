@@ -36,7 +36,6 @@ public class AutoCode {
         globalConfig.setServiceName("%sService");//去除Service的I前缀
         globalConfig.setIdType(IdType.ASSIGN_ID);//主键生成策略  雪花算法
         globalConfig.setDateType(DateType.ONLY_DATE);//日期配置
-//        globalConfig.setSwagger2(true);//开启Swagger2
 
         //DataSourceConfig
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
