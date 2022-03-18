@@ -1,0 +1,70 @@
+server:
+  port: 80
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    username: root
+    password: bsy8023.00
+    url: jdbc:mysql://localhost:3306/mybatis_plus?useSSL=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-return: false
+      test-on-borrow: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      break-after-acquire-failure: true
+      time-between-connect-error-millis: 300000
+      async-init: true
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      transaction-query-timeout: 6000
+
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      use-global-data-source-stat: true
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+        session-stat-enable: true
+        session-stat-max-count: 10
+        principal-session-name: session_name
+        principal-cookie-name: cookie_name
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: 'zhazha'
+        login-password: '000000'
+        allow: 127.0.0.1
+        deny:
+      aop-patterns: com.wyl.service.*
+
+#Mybatis-plus
+mybatis-plus:
+  configuration:
+    #日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #逻辑删除
+      logic-delete-field: flag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+
+
+
+
